@@ -23,7 +23,15 @@ app.prepare().then(() => {
   })
 
   server.use(router.routes())
-  server.listen(port, () => {
+  const httpServer=  server.listen(port, () => {
+    process.send('ready');
     console.log(`> Ready on http://localhost:${port}`)
   })
+
+  process.on('SIGINT', () => {
+    httpServer.close(() => {
+      process.exit(0);
+    });
+  });
+
 })

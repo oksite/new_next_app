@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "pm2 start ecosystem.config.js --only dev-app",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js --only pro-app",
+    "pro": "npx cross-env NODE_ENV=production pm2 startOrReload ecosystem.config.js --only pro-app",
     "type-check": "tsc"
   },
   "dependencies": {
